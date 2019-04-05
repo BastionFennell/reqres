@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 
-import UserPage from './pages/users';
+import UserList from 'src/components/user-list';
 
 class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <header>
-            Super Hero Co
-        </header>
-        <main>
-            <UserPage />
-        </main>
+        <UserList />
       </React.Fragment>
     );
   }
