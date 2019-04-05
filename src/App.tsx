@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import UserList from './components/user-list';
+
 class App extends Component {
   render() {
     return (
@@ -7,6 +9,9 @@ class App extends Component {
         <header>
             <h1> User Accounts </h1>
         </header>
+        <main>
+            <UserList />
+        </main>
       </React.Fragment>
     );
   }
