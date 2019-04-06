@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import {
     UserPageDispatchProps,
@@ -12,6 +13,10 @@ import { getUserList } from 'src/state/users/actions';
 
 import UserList from 'src/components/user-list';
 
+const Title = styled.h1`
+    font-weight: normal;
+`
+
 class UsersPage extends Component<UserPageProps> {
     componentWillMount() {
         this.props.getUserList();
@@ -22,6 +27,7 @@ class UsersPage extends Component<UserPageProps> {
 
         return (
             <React.Fragment>
+                <Title>User Accounts</Title>
                 <UserList users={users}/>
             </React.Fragment>
         );

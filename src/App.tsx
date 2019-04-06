@@ -22,6 +22,12 @@ const Logo = styled.div`
     width: 45px;
 `;
 
+const Main = styled.main`
+    margin: 0 auto;
+    max-width: 990px;
+    padding: 0 95px;
+`;
+
 class App extends Component {
   render() {
     return (
@@ -30,9 +36,9 @@ class App extends Component {
             <Logo />
             Super Hero Co.
         </Header>
-        <main>
+        <Main>
             <UserPage />
-        </main>
+        </Main>
       </React.Fragment>
     );
   }
