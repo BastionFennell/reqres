@@ -11,6 +11,7 @@ class UserList extends Component<UserListProps> {
             <section>
                 { users.map(user => (
                     <UserCard
+                        avatar={user.avatar}
                         date={user.date}
                         key={user.id}
                         name={`${user.first_name} ${user.last_name}`}
