@@ -15,8 +15,7 @@ const UserCard = ({
 
     return (
         <article
-            data-testid="card"
-            data-editing={editing ? 'true' : null}
+            data-testid="user-card"
             onClick={() => setEditing(!editing)}
         >
             {name}

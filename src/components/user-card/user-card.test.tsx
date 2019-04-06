@@ -16,7 +16,7 @@ it("Loads with initial state of not editing", () => {
 
 it("Switches to editing when clicked", () => {
     const { container } = render(<UserCard name="test" date="1/1/1111" onChange={() => null}  />);
-    const card = getByTestId(container, 'card');
+    const card = getByTestId(container, 'user-card');
     fireEvent.click(card);
     const nameField = queryAllByTestId(container, "name-field");
     expect(nameField).not.toBeNull();

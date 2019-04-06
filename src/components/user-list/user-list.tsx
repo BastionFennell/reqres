@@ -12,6 +12,7 @@ class UserList extends Component<UserListProps> {
                 { users.map(user => (
                     <UserCard
                         date={user.date}
+                        key={user.id}
                         name={user.name}
                         onChange={() => null}
                     />
