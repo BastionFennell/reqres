@@ -13,7 +13,7 @@ class UserList extends Component<UserListProps> {
                     <UserCard
                         date={user.date}
                         key={user.id}
-                        name={user.name}
+                        name={`${user.first_name} ${user.last_name}`}
                         onChange={() => null}
                     />
                 ))}

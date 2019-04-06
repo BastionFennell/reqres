@@ -1,1 +1,2 @@
 export const GET_USER_LIST = 'USERS:GET_USER_LIST';
+export const SET_USER_LIST = 'USERS:SET_USER_LIST';
