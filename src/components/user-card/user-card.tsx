@@ -13,7 +13,6 @@ const Article = styled.article`
     border-top: none;
     display: flex;
     height: 75px;
-    padding: 15px;
     width: 300px;
 
     &:first-of-type {
@@ -22,18 +21,21 @@ const Article = styled.article`
 `;
 
 const Avatar = styled.img`
-    width: 50px;
-    height: 50px;
+    height: 40px;
+    padding-top: 15px;
+    padding-left: 15px;
+    width: 40px;
 `;
 
 const InfoText = styled.section`
-    padding: 0 10px;
-`
+    flex-grow: 1;
+    padding: 15px 10px;
+`;
 
 const Name = styled.p`
     font-size: 24px;
     margin: 0;
-`
+`;
 
 const Input = styled.input`
     background: none;
@@ -41,11 +43,30 @@ const Input = styled.input`
     border-bottom: 2px solid black;
     outline: none;
     padding: 0;
-`
+    width: 100%;
+`;
 
 const NameInput = styled(Input)`
     font-size: 24px;
-`
+`;
+
+const Actions = styled.section`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3px;
+`;
+
+const ActionButton = styled.button`
+    background: none;
+    border: 1px solid black;
+    box-sizing: border-box;
+    display: block;
+    height: 34px;
+    outline: none;
+    width: 34px;
+`;
 
 const UserCard = ({
     avatar,
@@ -76,6 +97,12 @@ const UserCard = ({
                     </React.Fragment>
                 )}
             </InfoText>
+            {editing && (
+                <Actions>
+                    <ActionButton>y</ActionButton>
+                    <ActionButton>n</ActionButton>
+                </Actions>
+            )}
         </Article>
     );
 }
