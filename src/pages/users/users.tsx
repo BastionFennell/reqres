@@ -7,13 +7,15 @@ import { usersSelector } from 'src/state/users/selectors';
 import UserList from 'src/components/user-list';
 
 class UsersPage extends Component<UserPageProps> {
-  render() {
-    return (
-      <React.Fragment>
-        <UserList />
-      </React.Fragment>
-    );
-  }
+    render() {
+        const { users } = this.props;
+
+        return (
+            <React.Fragment>
+                <UserList users={users}/>
+            </React.Fragment>
+        );
+    }
 }
 
 const mapStateToProps = (state: any): UserPageProps => ({

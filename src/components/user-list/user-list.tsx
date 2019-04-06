@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 
+import { UserListProps } from './types';
+
 import UserCard from 'src/components/user-card';
 
-class UserList extends Component {
+class UserList extends Component<UserListProps> {
     render() {
+        const { users } = this.props;
         return (
             <section>
-                <UserCard
-                    date="1/1/1111"
-                    name="Doot"
-                    onChange={() => null}
-                />
+                { users.map(user => (
+                    <UserCard
+                        date={user.date}
+                        name={user.name}
+                        onChange={() => null}
+                    />
+                ))}
             </section>
         );
     }

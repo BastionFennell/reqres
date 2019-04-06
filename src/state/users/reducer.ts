@@ -1,4 +1,9 @@
-export const initialState = {}
+export const initialState = [
+    {
+        name: 'doot',
+        date: '1/1/1111',
+    },
+];
 
 export default (
     state = initialState,
