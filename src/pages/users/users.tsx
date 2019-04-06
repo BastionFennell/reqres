@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import { UserPageProps } from './types';
+
+import { usersSelector } from 'src/state/users/selectors';
 import UserList from 'src/components/user-list';
 
-class App extends Component {
+class UsersPage extends Component<UserPageProps> {
   render() {
     return (
       <React.Fragment>
@@ -12,4 +16,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state: any): UserPageProps => ({
+    users: usersSelector(state),
+});
+
+export default connect<UserPageProps, {}, {}>(
+    mapStateToProps,
+)(UsersPage);

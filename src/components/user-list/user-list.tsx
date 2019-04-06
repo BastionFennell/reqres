@@ -6,7 +6,11 @@ class UserList extends Component {
     render() {
         return (
             <section>
-                <UserCard />
+                <UserCard
+                    date="1/1/1111"
+                    name="Doot"
+                    onChange={() => null}
+                />
             </section>
         );
     }
