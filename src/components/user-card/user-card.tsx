@@ -55,7 +55,7 @@ const Actions = styled.section`
 
 const ActionButton = styled.button`
     background: none;
-    border: 1px solid black;
+    border: 2px solid black;
     box-sizing: border-box;
     display: block;
     height: 34px;
@@ -67,6 +67,7 @@ const UserCard = ({
     avatar,
     date,
     name,
+    onDelete,
     onSave,
 } : UserCardProps) => {
     const [editing, setEditing] = useState(false);
@@ -83,10 +84,7 @@ const UserCard = ({
     };
 
     return (
-        <Article
-            data-testid="user-card"
-            onClick={() => !editing && setEditing(!editing)}
-        >
+        <Article data-testid="user-card">
             <Avatar alt={name} src={avatar} />
             <InfoText>
                 {editing ? (
@@ -103,20 +101,31 @@ const UserCard = ({
                     </React.Fragment>
                 )}
             </InfoText>
-            {editing && (
-                <Actions>
-                    <ActionButton
-                        onClick={onClickSave}
-                    >
-                        y
-                    </ActionButton>
-                    <ActionButton
-                        onClick={onClickCancel}
-                    >
-                        n
-                    </ActionButton>
-                </Actions>
-            )}
+            <Actions>
+                {editing ? (
+                    <React.Fragment>
+                        <ActionButton
+                            onClick={onClickSave}
+                        >
+                            y
+                        </ActionButton>
+                        <ActionButton
+                            onClick={onClickCancel}
+                        >
+                            n
+                        </ActionButton>
+                    </React.Fragment>
+                ) : (
+                    <React.Fragment>
+                        <ActionButton onClick={() => setEditing(true)}>
+                            e
+                        </ActionButton>
+                        <ActionButton onClick={onDelete}>
+                            d
+                        </ActionButton>
+                    </React.Fragment>
+                )}
+            </Actions>
         </Article>
     );
 }

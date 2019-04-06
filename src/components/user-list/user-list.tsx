@@ -15,6 +15,7 @@ class UserList extends Component<UserListProps> {
                         date={user.date}
                         key={user.id}
                         name={`${user.first_name} ${user.last_name}`}
+                        onDelete={() => null}
                         onSave={(name: string) => onUserSave(name, index)}
                     />
                 ))}
