@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-interface Props {
-    avatar: string;
-    date: string;
-    name: string;
-    onChange(e: any): void;
-}
+import { UserCardProps } from './types';
 
 const Article = styled.article`
     border: 1px solid black;
@@ -72,9 +67,20 @@ const UserCard = ({
     avatar,
     date,
     name,
-    onChange,
-} : Props) => {
+    onSave,
+} : UserCardProps) => {
     const [editing, setEditing] = useState(false);
+    const [unsavedName, setUnsavedName] = useState(name);
+
+    const onClickSave = () => {
+        onSave(unsavedName);
+        setEditing(false);
+    };
+
+    const onClickCancel = () => {
+        setUnsavedName(name);
+        setEditing(false);
+    };
 
     return (
         <Article
@@ -86,21 +92,29 @@ const UserCard = ({
                 {editing ? (
                     <NameInput
                         data-testid="name-field"
-                        onChange={onChange}
+                        onChange={(e: any) => setUnsavedName(e.target.value)}
                         type="text"
-                        value={name}
+                        value={unsavedName}
                     />
                 ) : (
                     <React.Fragment>
-                        <Name> {name} </Name>
+                        <Name> {unsavedName} </Name>
                         {date}
                     </React.Fragment>
                 )}
             </InfoText>
             {editing && (
                 <Actions>
-                    <ActionButton>y</ActionButton>
-                    <ActionButton>n</ActionButton>
+                    <ActionButton
+                        onClick={onClickSave}
+                    >
+                        y
+                    </ActionButton>
+                    <ActionButton
+                        onClick={onClickCancel}
+                    >
+                        n
+                    </ActionButton>
                 </Actions>
             )}
         </Article>

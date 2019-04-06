@@ -6,16 +6,16 @@ import UserCard from 'src/components/user-card';
 
 class UserList extends Component<UserListProps> {
     render() {
-        const { users } = this.props;
+        const { onUserSave, users } = this.props;
         return (
             <section>
-                { users.map(user => (
+                { users.map((user, index) => (
                     <UserCard
                         avatar={user.avatar}
                         date={user.date}
                         key={user.id}
                         name={`${user.first_name} ${user.last_name}`}
-                        onChange={() => null}
+                        onSave={(name: string) => onUserSave(name, index)}
                     />
                 ))}
             </section>

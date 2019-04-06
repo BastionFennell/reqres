@@ -22,13 +22,17 @@ class UsersPage extends Component<UserPageProps> {
         this.props.getUserList();
     }
 
+    onUserSave = function(name: string, index: number): void {
+        console.log(name, index);
+    }
+
     render() {
         const { users } = this.props;
 
         return (
             <React.Fragment>
                 <Title>User Accounts</Title>
-                <UserList users={users}/>
+                <UserList onUserSave={this.onUserSave} users={users}/>
             </React.Fragment>
         );
     }
