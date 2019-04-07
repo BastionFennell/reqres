@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import dateFns from 'date-fns';
 
 import { UserCardProps } from './types';
 
@@ -49,6 +50,11 @@ const InfoText = styled.section`
     padding: 15px 10px;
 `;
 
+const DateString = styled.p`
+    font-size: 12px;
+    margin: 0;
+`;
+
 const Name = styled.p`
     font-size: 24px;
     margin: 0;
@@ -63,7 +69,15 @@ const Input = styled.input`
     width: 100%;
 `;
 
-const NameInput = styled(Input)`
+const DateInput = styled(Input).attrs({
+    type: 'date',
+})`
+    font-size: 12px;
+`;
+
+const NameInput = styled(Input).attrs({
+    type: 'text',
+})`
     font-size: 24px;
 `;
 
@@ -114,14 +128,19 @@ const UserCard = ({
 } : UserCardProps) => {
     const [editing, setEditing] = useState(false);
     const [unsavedName, setUnsavedName] = useState(`${first_name} ${last_name}`);
+    const [unsavedDate, setUnsavedDate] = useState(date);
 
     useEffect(() => {
         setUnsavedName(`${first_name} ${last_name}`);
     }, [first_name, last_name]);
 
+    useEffect(() => {
+        setUnsavedDate(date);
+    }, [date]);
+
     const onClickSave = () => {
         const [first_name, last_name] = unsavedName.split(' ');
-        onSave(first_name, last_name);
+        onSave(first_name, last_name, unsavedDate);
         setUnsavedName(`${first_name} ${last_name}`);
         setEditing(false);
     };
@@ -131,21 +150,29 @@ const UserCard = ({
         setEditing(false);
     };
 
+    const viewableDate = (dateString: string): string => dateFns.format(dateString, 'MM/DD/YYYY');
+
     return (
         <Article data-testid="user-card">
             <Avatar alt={name} src={avatar} />
             <InfoText>
                 {editing ? (
-                    <NameInput
-                        data-testid="name-field"
-                        onChange={(e: any) => setUnsavedName(e.target.value)}
-                        type="text"
-                        value={unsavedName}
-                    />
+                    <React.Fragment>
+                        <NameInput
+                            data-testid="name-field"
+                            onChange={(e: any) => setUnsavedName(e.target.value)}
+                            value={unsavedName}
+                        />
+                        <DateInput
+                            data-testid="date-field"
+                            onChange={(e: any) => setUnsavedDate(e.target.value)}
+                            value={unsavedDate}
+                        />
+                    </React.Fragment>
                 ) : (
                     <React.Fragment>
                         <Name> {unsavedName} </Name>
-                        {date}
+                        <DateString> {viewableDate(unsavedDate)} </DateString>
                     </React.Fragment>
                 )}
             </InfoText>

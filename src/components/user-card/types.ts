@@ -4,6 +4,6 @@ export interface UserCardProps {
     first_name: string;
     last_name: string;
     onDelete(): void;
-    onSave(first_name: string, last_name: string): void;
+    onSave(first_name: string, last_name: string, userDate: string): void;
 }
 

@@ -3,7 +3,7 @@ export interface User {
     first_name: string;
     last_name: string;
     id: number;
-    date: string;
+    userDate?: string;
 };
 
 export interface addUserAction {
