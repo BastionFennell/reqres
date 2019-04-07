@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }from 'react';
 import styled from 'styled-components';
 
 import { UserModalProps } from './types';
@@ -84,26 +84,39 @@ const CancelButton = styled(ModalButton)`
 `;
 
 const UserModal = ({ onCreate, onCancel }: UserModalProps) => {
+    const [avatar, setAvatar] = useState('');
+    const [name, setName] = useState('');
+
     return (
         <Modal>
-            <ModalBackground onClick={() => onCancel()}>
-                <ModalForeground onClick={(e: any) => e.stopPropagation()}>
+            <ModalBackground data-testid="background" onClick={() => onCancel()}>
+                <ModalForeground data-testid="foreground" onClick={(e: any) => e.stopPropagation()}>
                     <ModalHeader>
                         <h2> Create User </h2>
                     </ModalHeader>
                     <ModalBody>
                         <FormSection>
                             <label htmlFor="avatar"> Avatar Url</label>
-                            <input id="avatar" type="text" />
+                            <input
+                                id="avatar"
+                                onChange={(e: any) => setAvatar(e.target.value)}
+                                type="text"
+                                value={avatar}
+                            />
                         </FormSection>
                         <FormSection>
                             <label htmlFor="name"> Name </label>
-                            <input type="text" />
+                            <input
+                                id="name"
+                                onChange={(e: any) => setName(e.target.value)}
+                                type="text"
+                                value={name}
+                            />
                         </FormSection>
                     </ModalBody>
                     <ModalActions>
                         <CancelButton onClick={() => onCancel()}> Cancel </CancelButton>
-                        <CreateButton onClick={() => onCreate()}> Create </CreateButton>
+                        <CreateButton onClick={() => onCreate(avatar, name)}> Create </CreateButton>
                     </ModalActions>
                 </ModalForeground>
             </ModalBackground>

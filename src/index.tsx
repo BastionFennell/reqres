@@ -9,6 +9,7 @@ import App from './App';
 ReactDOM.render(
     <Provider store={configureStore()}>
         <App />
+        <div id="modal-root"></div>
     </Provider>
     , document.getElementById('root')
 );

@@ -1,4 +1,4 @@
 export interface UserModalProps {
     onCancel: Function;
-    onCreate: Function;
+    onCreate: (avatar: string, name: string) => void;
 }
