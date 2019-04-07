@@ -10,6 +10,7 @@ const AppContainer = styled.div`
 const Header = styled.header`
     align-items: center;
     background: #e2e2e2;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.5);
     display: flex;
     font-size: 24px;
     height: 75px;
