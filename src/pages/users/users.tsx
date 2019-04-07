@@ -18,7 +18,7 @@ import {
 } from 'src/state/users/actions';
 
 import UserList from 'src/components/user-list';
-import Modal from 'src/components/modal';
+import CreateUserModal from 'src/components/create-user-modal';
 
 const Title = styled.h1`
     font-weight: normal;
@@ -60,10 +60,7 @@ class UsersPage extends Component<UserPageProps, UserPageState> {
                     onUserSave={updateUser}
                     users={users}
                 />
-                {showModal && <Modal>
-                    CreateUser
-                </Modal>
-                }
+                {showModal && <CreateUserModal onCancel={this.hideModal} onCreate={() => null} />}
             </React.Fragment>
         );
     }
