@@ -18,7 +18,7 @@ export function* updateUserSaga({ user }: updateUserActionType) {
         {...user},
     );
 
-    const newUser = response.data || {};
+    const newUser = response || {};
     const setUserAction = yield call(setUser, newUser);
 
     yield put(setUserAction);

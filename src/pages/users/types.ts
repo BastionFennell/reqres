@@ -6,6 +6,7 @@ export interface UserPageStateProps {
 
 export interface UserPageDispatchProps {
     readonly getUserList: () => void;
+    readonly updateUser: (user: User) => void;
 }
 
 export type UserPageProps = UserPageStateProps & UserPageDispatchProps;

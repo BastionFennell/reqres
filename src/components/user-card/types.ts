@@ -3,6 +3,6 @@ export interface UserCardProps {
     date: string;
     name: string;
     onDelete(): void;
-    onSave(value: string): void;
+    onSave(name: string): void;
 }
 

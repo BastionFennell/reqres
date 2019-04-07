@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
+import { User } from 'src/state/users/types';
 import {
     UserPageDispatchProps,
     UserPageProps,
@@ -9,7 +10,7 @@ import {
 } from './types';
 
 import { usersSelector } from 'src/state/users/selectors';
-import { getUserList } from 'src/state/users/actions';
+import { getUserList, updateUser } from 'src/state/users/actions';
 
 import UserList from 'src/components/user-list';
 
@@ -22,8 +23,10 @@ class UsersPage extends Component<UserPageProps> {
         this.props.getUserList();
     }
 
-    onUserSave = function(name: string, index: number): void {
-        console.log(name, index);
+    onUserSave = (user: User): void => {
+        const { updateUser } = this.props;
+
+        updateUser(user);
     }
 
     render() {
@@ -44,6 +47,7 @@ const mapStateToProps = (state: any): UserPageStateProps => ({
 
 const mapDispatchToProps = (dispatch: Function): UserPageDispatchProps => ({
     getUserList: () => dispatch(getUserList()),
+    updateUser: (user: User) => dispatch(updateUser(user)),
 });
 
 export default connect<UserPageStateProps, UserPageDispatchProps, {}>(

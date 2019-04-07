@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { UserCardProps } from './types';
@@ -72,6 +72,10 @@ const UserCard = ({
 } : UserCardProps) => {
     const [editing, setEditing] = useState(false);
     const [unsavedName, setUnsavedName] = useState(name);
+
+    useEffect(() => {
+        setUnsavedName(name);
+    }, [name]);
 
     const onClickSave = () => {
         onSave(unsavedName);
