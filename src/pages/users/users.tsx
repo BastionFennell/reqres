@@ -77,7 +77,7 @@ class UsersPage extends Component<UserPageProps, UserPageState> {
     onCreateUser = (name: string, avatar: string) => {
         const [first_name, last_name] = name.split(' ');
 
-        this.props.createUser(first_name, last_name, avatar);
+        this.props.createUser(first_name || '', last_name || '', avatar);
         this.hideCreateModal();
     }
 
