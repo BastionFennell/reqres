@@ -100,6 +100,7 @@ const UserModal = ({ onCreate, onCancel }: UserModalProps) => {
                             <input
                                 id="avatar"
                                 onChange={(e: any) => setAvatar(e.target.value)}
+                                onKeyPress={(e: any) => e.key === 'Enter' && onCreate(name, avatar)}
                                 type="text"
                                 value={avatar}
                             />
@@ -109,6 +110,7 @@ const UserModal = ({ onCreate, onCancel }: UserModalProps) => {
                             <input
                                 id="name"
                                 onChange={(e: any) => setName(e.target.value)}
+                                onKeyPress={(e: any) => e.key === 'Enter' && onCreate(name, avatar)}
                                 type="text"
                                 value={name}
                             />
