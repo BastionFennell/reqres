@@ -12,6 +12,7 @@ import {
 
 import { usersSelector } from 'src/state/users/selectors';
 import {
+    createUser,
     deleteUser,
     getUserList,
     updateUser,
@@ -45,8 +46,14 @@ class UsersPage extends Component<UserPageProps, UserPageState> {
         });
     }
 
+    onCreateUser = (name: string, avatar: string) => {
+        const [first_name, last_name] = name.split(' ');
+
+        this.props.createUser(first_name, last_name, avatar);
+    }
+
     render() {
-        const { deleteUser, updateUser, users } = this.props;
+        const { createUser, deleteUser, updateUser, users } = this.props;
         const { showModal } = this.state;
 
         return (
@@ -60,7 +67,7 @@ class UsersPage extends Component<UserPageProps, UserPageState> {
                     onUserSave={updateUser}
                     users={users}
                 />
-                {showModal && <CreateUserModal onCancel={this.hideModal} onCreate={() => null} />}
+                {showModal && <CreateUserModal onCancel={this.hideModal} onCreate={this.onCreateUser} />}
             </React.Fragment>
         );
     }
@@ -71,6 +78,7 @@ const mapStateToProps = (state: any): UserPageStateProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Function): UserPageDispatchProps => ({
+    createUser: (first_name: string, last_name: string, avatar: string) => dispatch(createUser(first_name, last_name, avatar)),
     deleteUser: (index: number, user: User) => dispatch(deleteUser(index, user)),
     getUserList: () => dispatch(getUserList()),
     updateUser: (index: number, user: User) => dispatch(updateUser(index, user)),

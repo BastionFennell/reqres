@@ -116,7 +116,7 @@ const UserModal = ({ onCreate, onCancel }: UserModalProps) => {
                     </ModalBody>
                     <ModalActions>
                         <CancelButton onClick={() => onCancel()}> Cancel </CancelButton>
-                        <CreateButton onClick={() => onCreate(avatar, name)}> Create </CreateButton>
+                        <CreateButton onClick={() => onCreate(name, avatar)}> Create </CreateButton>
                     </ModalActions>
                 </ModalForeground>
             </ModalBackground>

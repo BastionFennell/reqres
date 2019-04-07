@@ -8,10 +8,11 @@ import { addUser } from 'src/state/users/actions';
 
 export const createUserUrl = 'https://reqres.in/api/users';
 
-export function* createUserSaga({ first_name, last_name }: createUserActionType) {
+export function* createUserSaga({ avatar, first_name, last_name }: createUserActionType) {
     const { data: response } = yield call(axios.post,
         createUserUrl,
         {
+            avatar,
             first_name,
             last_name,
         },

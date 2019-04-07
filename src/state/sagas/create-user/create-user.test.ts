@@ -12,15 +12,16 @@ it('Deletes a user via the reqres api', () => {
         id: 1
     }
 
+    const avatar = 'test.url';
     const first_name = 'doot';
     const last_name = 'mcDoot';
 
-    expectSaga(createUserSaga, first_name, last_name)
+    expectSaga(createUserSaga, {avatar, first_name, last_name })
         .provide([
-            [call(axios.post, createUserUrl, { first_name, last_name }), user],
+            [call(axios.post, createUserUrl, { avatar, first_name, last_name }), user],
             [call(addUser, user), addUserAction],
         ])
-        .call(axios.post, createUserUrl, { first_name, last_name })
+        .call(axios.post, createUserUrl, { avatar, first_name, last_name })
         .call(addUser, user)
         .put(addUserAction)
 });

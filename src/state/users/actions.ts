@@ -26,10 +26,11 @@ export const addUser = (user: User): addUserAction => ({
     user,
 });
 
-export const createUser = (first_name: string, last_name: string): createUserAction => ({
+export const createUser = (first_name: string, last_name: string, avatar: string): createUserAction => ({
     type: CREATE_USER,
+    avatar,
     first_name,
-    last_name
+    last_name,
 });
 
 export const deleteUser = (index: number, user: User): deleteUserAction => ({

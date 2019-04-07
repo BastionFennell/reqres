@@ -13,6 +13,7 @@ export interface addUserAction {
 
 export interface createUserAction {
     readonly type: string;
+    readonly avatar: string;
     readonly first_name: string;
     readonly last_name: string;
 }
