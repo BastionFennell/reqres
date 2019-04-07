@@ -23,6 +23,7 @@ import CreateUserModal from 'src/components/create-user-modal';
 import CreateButton from './create-button';
 
 const Title = styled.h1`
+    font-size: 2.5em;
     font-weight: normal;
     margin-bottom: 40px;
 `;
