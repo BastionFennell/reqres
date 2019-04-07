@@ -6,6 +6,17 @@ export interface User {
     date: string;
 };
 
+export interface addUserAction {
+    readonly type: string;
+    readonly user: User;
+}
+
+export interface createUserAction {
+    readonly type: string;
+    readonly first_name: string;
+    readonly last_name: string;
+}
+
 export interface deleteUserFromReduxAction {
     readonly type: string;
     readonly index: number;
