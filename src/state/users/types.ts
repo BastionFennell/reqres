@@ -6,6 +6,16 @@ export interface User {
     date: string;
 };
 
+export interface deleteUserFromReduxAction {
+    readonly type: string;
+    readonly user: User;
+}
+
+export interface deleteUserAction {
+    readonly type: string;
+    readonly user: User;
+}
+
 export interface getUserListAction {
     readonly type: string;
 }
@@ -26,6 +36,8 @@ export interface setUserAction {
 }
 
 export type UserActions =
+    deleteUserFromReduxAction |
+    deleteUserAction |
     getUserListAction |
     setUserListAction |
     setUserAction |

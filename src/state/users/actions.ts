@@ -1,4 +1,6 @@
 import {
+    DELETE_USER,
+    DELETE_USER_FROM_REDUX,
     GET_USER_LIST,
     SET_USER_LIST,
     SET_USER,
@@ -6,12 +8,24 @@ import {
 } from './action-types';
 
 import {
+    deleteUserAction,
     getUserListAction,
     setUserListAction,
     setUserAction,
     updateUserAction,
     User,
 } from 'src/state/users/types';
+
+export const deleteUser = (user: User): deleteUserAction => ({
+    type: DELETE_USER,
+    user,
+});
+
+export const deleteUserFromRedux = (user: User): deleteUserAction => ({
+    type: DELETE_USER_FROM_REDUX,
+    user,
+});
+
 
 export const getUserList = (): getUserListAction => ({
     type: GET_USER_LIST,

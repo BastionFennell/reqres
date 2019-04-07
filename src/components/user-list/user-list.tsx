@@ -7,6 +7,7 @@ import UserCard from 'src/components/user-card';
 
 const UserList = ({
     onUserSave,
+    onUserDelete,
     users,
 }: UserListProps) => {
     const onSaveName = (user: User) => (first_name: string, last_name: string) => (
@@ -26,7 +27,7 @@ const UserList = ({
                     key={user.id}
                     first_name={user.first_name}
                     last_name={user.last_name}
-                    onDelete={() => null}
+                    onDelete={() => onUserDelete(user)}
                     onSave={onSaveName(user)}
                 />
             ))}

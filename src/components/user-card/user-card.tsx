@@ -86,7 +86,7 @@ const UserCard = ({
     };
 
     const onClickCancel = () => {
-        setUnsavedName(name);
+        setUnsavedName(`${first_name} ${last_name}`);
         setEditing(false);
     };
 

@@ -10,7 +10,11 @@ import {
 } from './types';
 
 import { usersSelector } from 'src/state/users/selectors';
-import { getUserList, updateUser } from 'src/state/users/actions';
+import {
+    deleteUser,
+    getUserList,
+    updateUser,
+} from 'src/state/users/actions';
 
 import UserList from 'src/components/user-list';
 
@@ -23,19 +27,17 @@ class UsersPage extends Component<UserPageProps> {
         this.props.getUserList();
     }
 
-    onUserSave = (user: User): void => {
-        const { updateUser } = this.props;
-
-        updateUser(user);
-    }
-
     render() {
-        const { users } = this.props;
+        const { deleteUser, updateUser, users } = this.props;
 
         return (
             <React.Fragment>
                 <Title>User Accounts</Title>
-                <UserList onUserSave={this.onUserSave} users={users}/>
+                <UserList
+                    onUserDelete={deleteUser}
+                    onUserSave={updateUser}
+                    users={users}
+                />
             </React.Fragment>
         );
     }
@@ -46,6 +48,7 @@ const mapStateToProps = (state: any): UserPageStateProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Function): UserPageDispatchProps => ({
+    deleteUser: (user: User) => dispatch(deleteUser(user)),
     getUserList: () => dispatch(getUserList()),
     updateUser: (user: User) => dispatch(updateUser(user)),
 });
