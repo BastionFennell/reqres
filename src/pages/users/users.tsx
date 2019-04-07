@@ -20,10 +20,17 @@ import {
 
 import UserList from 'src/components/user-list';
 import CreateUserModal from 'src/components/create-user-modal';
+import CreateButton from './create-button';
 
 const Title = styled.h1`
     font-weight: normal;
-`
+    margin-bottom: 40px;
+`;
+
+const CreateSection = styled.section`
+    margin-bottom: 40px;
+`;
+
 
 class UsersPage extends Component<UserPageProps, UserPageState> {
     state = {
@@ -60,9 +67,9 @@ class UsersPage extends Component<UserPageProps, UserPageState> {
         return (
             <React.Fragment>
                 <Title>User Accounts</Title>
-                <button onClick={this.showModal} >
-                    show
-                </button>
+                <CreateSection>
+                    <CreateButton onClick={this.showModal} />
+                </CreateSection>
                 <UserList
                     onUserDelete={deleteUser}
                     onUserSave={updateUser}
