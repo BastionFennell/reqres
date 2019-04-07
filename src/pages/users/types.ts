@@ -10,4 +10,8 @@ export interface UserPageDispatchProps {
     readonly updateUser: (index: number, user: User) => void;
 }
 
+export interface UserPageState {
+    showModal: boolean;
+}
+
 export type UserPageProps = UserPageStateProps & UserPageDispatchProps;
