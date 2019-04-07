@@ -140,8 +140,8 @@ const UserCard = ({
 
     const onClickSave = () => {
         const [first_name, last_name] = unsavedName.split(' ');
-        onSave(first_name, last_name, unsavedDate);
-        setUnsavedName(`${first_name} ${last_name}`);
+        onSave(first_name || '', last_name || '', unsavedDate);
+        setUnsavedName(`${first_name || ''} ${last_name || ''}`);
         setEditing(false);
     };
 
