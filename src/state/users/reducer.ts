@@ -21,9 +21,9 @@ export default (
     switch(action.type) {
         case DELETE_USER_FROM_REDUX: {
             const currentAction = action as deleteUserFromReduxAction;
-            const userId = currentAction.user.id;
+            const index = currentAction.index;
 
-            return [...state.slice(0, userId - 1), ...state.slice(userId)]
+            return [...state.slice(0, index), ...state.slice(index + 1)]
         }
         case SET_USER_LIST: {
             const currentAction = action as setUserListAction;

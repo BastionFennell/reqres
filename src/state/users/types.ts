@@ -8,11 +8,12 @@ export interface User {
 
 export interface deleteUserFromReduxAction {
     readonly type: string;
-    readonly user: User;
+    readonly index: number;
 }
 
 export interface deleteUserAction {
     readonly type: string;
+    readonly index: number;
     readonly user: User;
 }
 

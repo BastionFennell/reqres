@@ -9,6 +9,7 @@ import {
 
 import {
     deleteUserAction,
+    deleteUserFromReduxAction,
     getUserListAction,
     setUserListAction,
     setUserAction,
@@ -16,14 +17,15 @@ import {
     User,
 } from 'src/state/users/types';
 
-export const deleteUser = (user: User): deleteUserAction => ({
+export const deleteUser = (index: number, user: User): deleteUserAction => ({
     type: DELETE_USER,
+    index,
     user,
 });
 
-export const deleteUserFromRedux = (user: User): deleteUserAction => ({
+export const deleteUserFromRedux = (index: number): deleteUserFromReduxAction => ({
     type: DELETE_USER_FROM_REDUX,
-    user,
+    index,
 });
 
 

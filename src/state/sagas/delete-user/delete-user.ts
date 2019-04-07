@@ -8,12 +8,12 @@ import { deleteUserFromRedux } from 'src/state/users/actions';
 
 export const getDeleteUserUrl = (id: number) => `https://reqres.in/api/users/${id}`;
 
-export function* deleteUserSaga({ user }: deleteUserActionType) {
+export function* deleteUserSaga({ index, user }: deleteUserActionType) {
     const { data: response } = yield call(axios.delete,
         getDeleteUserUrl(user.id),
     );
 
-    const deleteUserAction = yield call(deleteUserFromRedux, user);
+    const deleteUserAction = yield call(deleteUserFromRedux, index);
 
     yield put(deleteUserAction);
 }

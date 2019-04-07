@@ -27,7 +27,7 @@ const UserList = ({
                     key={user.id}
                     first_name={user.first_name}
                     last_name={user.last_name}
-                    onDelete={() => onUserDelete(user)}
+                    onDelete={() => onUserDelete(index, user)}
                     onSave={onSaveName(user)}
                 />
             ))}

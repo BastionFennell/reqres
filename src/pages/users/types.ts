@@ -5,7 +5,7 @@ export interface UserPageStateProps {
 }
 
 export interface UserPageDispatchProps {
-    readonly deleteUser: (user: User) => void;
+    readonly deleteUser: (index: number, user: User) => void;
     readonly getUserList: () => void;
     readonly updateUser: (user: User) => void;
 }
