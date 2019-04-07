@@ -4,42 +4,17 @@ import styled from 'styled-components';
 import { UserModalProps } from './types';
 
 import Modal from 'src/components/modal';
+import {
+    ModalBackground,
+    ModalForeground,
+    ModalHeader,
+    ModalBody,
+    ModalActions,
+    ModalButton,
+} from 'src/components/modal/shared-layout';
 
-const ModalBackground = styled.div`
-    align-items: center;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    height: 100vh;
-    justify-content: space-around;
-    left: 0;
-    width: 100vw;
-    position: absolute;
-    top: 0;
-`;
-
-const ModalForeground = styled.aside`
-    background: white;
-    display: flex;
-    flex-direction: column;
-    width: 400px;
+const StyledModalForeground = styled(ModalForeground)`
     height: 300px;
-`;
-
-const ModalHeader = styled.section`
-    align-items: center;
-    border-bottom: 1px solid black;
-    display: flex;
-    height: 50px;
-
-    h2 {
-        margin: 0;
-        padding-left: 15px;
-    }
-`;
-
-const ModalBody = styled.section`
-    flex-grow: 1;
-    padding: 15px 20px;
 `;
 
 const FormSection = styled.section`
@@ -57,24 +32,6 @@ const FormSection = styled.section`
     }
 `
 
-const ModalActions = styled.section`
-    align-items: center;
-    justify-content: flex-end;
-    border-top: 1px solid black;
-    display: flex;
-    height: 50px;
-`;
-
-const ModalButton = styled.button`
-    background: none;
-    border: 2px solid black;
-    font-size: 20px;
-    height: 40px;
-    margin-right: 15px;
-    outline: none;
-    width: 80px;
-`
-
 const CreateButton = styled(ModalButton)`
     border-color: green;
 `;
@@ -90,7 +47,7 @@ const UserModal = ({ onCreate, onCancel }: UserModalProps) => {
     return (
         <Modal>
             <ModalBackground data-testid="background" onClick={() => onCancel()}>
-                <ModalForeground data-testid="foreground" onClick={(e: any) => e.stopPropagation()}>
+                <StyledModalForeground data-testid="foreground" onClick={(e: any) => e.stopPropagation()}>
                     <ModalHeader>
                         <h2> Create User </h2>
                     </ModalHeader>
@@ -120,7 +77,7 @@ const UserModal = ({ onCreate, onCancel }: UserModalProps) => {
                         <CancelButton onClick={() => onCancel()}> Cancel </CancelButton>
                         <CreateButton onClick={() => onCreate(name, avatar)}> Create </CreateButton>
                     </ModalActions>
-                </ModalForeground>
+                </StyledModalForeground>
             </ModalBackground>
         </Modal>
     )
