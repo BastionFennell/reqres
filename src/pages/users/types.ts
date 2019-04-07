@@ -12,7 +12,10 @@ export interface UserPageDispatchProps {
 }
 
 export interface UserPageState {
-    showModal: boolean;
+    deletedUser: User | null;
+    deletedUserIndex: number;
+    showCreateModal: boolean;
+    showDeleteModal: boolean;
 }
 
 export type UserPageProps = UserPageStateProps & UserPageDispatchProps;

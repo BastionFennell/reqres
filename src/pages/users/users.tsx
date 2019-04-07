@@ -20,6 +20,7 @@ import {
 
 import UserList from 'src/components/user-list';
 import CreateUserModal from 'src/components/create-user-modal';
+import DeleteUserModal from 'src/components/delete-user-modal';
 import CreateButton from './create-button';
 
 const Title = styled.h1`
@@ -35,22 +36,41 @@ const CreateSection = styled.section`
 
 class UsersPage extends Component<UserPageProps, UserPageState> {
     state = {
-        showModal: false,
+        deletedUser: null,
+        deletedUserIndex: -1,
+        showDeleteModal: false,
+        showCreateModal: false,
     }
 
     componentWillMount() {
         this.props.getUserList();
     }
 
-    hideModal = (): void => {
+    hideCreateModal = (): void => {
         this.setState({
-            showModal: false,
+            showCreateModal: false,
         });
     }
 
-    showModal = (): void => {
+    showCreateModal = (): void => {
         this.setState({
-            showModal: true,
+            showCreateModal: true,
+        });
+    }
+
+    hideDeleteModal = (): void => {
+        this.setState({
+            showDeleteModal: false,
+            deletedUserIndex: -1,
+            deletedUser: null,
+        });
+    }
+
+    showDeleteModal = (index: number, user: User): void => {
+        this.setState({
+            showDeleteModal: true,
+            deletedUserIndex: index,
+            deletedUser: user,
         });
     }
 
@@ -58,25 +78,34 @@ class UsersPage extends Component<UserPageProps, UserPageState> {
         const [first_name, last_name] = name.split(' ');
 
         this.props.createUser(first_name, last_name, avatar);
-        this.hideModal();
+        this.hideCreateModal();
+    }
+
+    onDeleteUser = () => {
+        const { deletedUser, deletedUserIndex } = this.state;
+        if (deletedUser) {
+            this.props.deleteUser(deletedUserIndex, deletedUser);
+            this.hideDeleteModal();
+        }
     }
 
     render() {
         const { createUser, deleteUser, updateUser, users } = this.props;
-        const { showModal } = this.state;
+        const { deletedUser, showCreateModal, showDeleteModal } = this.state;
 
         return (
             <React.Fragment>
                 <Title>User Accounts</Title>
                 <CreateSection>
-                    <CreateButton onClick={this.showModal} />
+                    <CreateButton onClick={this.showCreateModal} />
                 </CreateSection>
                 <UserList
-                    onUserDelete={deleteUser}
+                    onUserDelete={this.showDeleteModal}
                     onUserSave={updateUser}
                     users={users}
                 />
-                {showModal && <CreateUserModal onCancel={this.hideModal} onCreate={this.onCreateUser} />}
+                {showCreateModal && <CreateUserModal onCancel={this.hideCreateModal} onCreate={this.onCreateUser} />}
+                {showDeleteModal && deletedUser && <DeleteUserModal onCancel={this.hideDeleteModal} onDelete={this.onDeleteUser} user={deletedUser}/>}
             </React.Fragment>
         );
     }
