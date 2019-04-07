@@ -15,4 +15,18 @@ export interface setUserListAction {
     readonly users: Array<User>;
 }
 
-export type UserActions = getUserListAction | setUserListAction;
+export interface updateUserAction {
+    readonly type: string;
+    readonly user: User;
+}
+
+export interface setUserAction {
+    readonly type: string;
+    readonly user: User;
+}
+
+export type UserActions =
+    getUserListAction |
+    setUserListAction |
+    setUserAction |
+    updateUserAction;

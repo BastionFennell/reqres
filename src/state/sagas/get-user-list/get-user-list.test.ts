@@ -25,5 +25,5 @@ it('Gets users from the reqres api', () => {
             [call(setUserList, userListResponse.data.data), setUserListAction],
         ])
         .call(axios.get, getUserListUrl)
-        .call(setUserListAction)
+        .put(setUserListAction)
 });
