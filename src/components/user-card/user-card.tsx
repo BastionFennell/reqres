@@ -66,19 +66,22 @@ const ActionButton = styled.button`
 const UserCard = ({
     avatar,
     date,
-    name,
+    first_name,
+    last_name,
     onDelete,
     onSave,
 } : UserCardProps) => {
     const [editing, setEditing] = useState(false);
-    const [unsavedName, setUnsavedName] = useState(name);
+    const [unsavedName, setUnsavedName] = useState(`${first_name} ${last_name}`);
 
     useEffect(() => {
-        setUnsavedName(name);
-    }, [name]);
+        setUnsavedName(`${first_name} ${last_name}`);
+    }, [first_name, last_name]);
 
     const onClickSave = () => {
-        onSave(unsavedName);
+        const [first_name, last_name] = unsavedName.split(' ');
+        onSave(first_name, last_name);
+        setUnsavedName(`${first_name} ${last_name}`);
         setEditing(false);
     };
 

@@ -9,15 +9,13 @@ const UserList = ({
     onUserSave,
     users,
 }: UserListProps) => {
-    const onSaveName = (user: User, name: string) => {
-        const [first_name, last_name] = name.split(' ');
-
+    const onSaveName = (user: User) => (first_name: string, last_name: string) => (
         onUserSave({
             ...user,
             first_name,
             last_name,
-        });
-    }
+        })
+    )
 
     return (
         <section>
@@ -26,9 +24,10 @@ const UserList = ({
                     avatar={user.avatar}
                     date={user.date}
                     key={user.id}
-                    name={`${user.first_name} ${user.last_name}`}
+                    first_name={user.first_name}
+                    last_name={user.last_name}
                     onDelete={() => null}
-                    onSave={(name: string) => onSaveName(user, name)}
+                    onSave={onSaveName(user)}
                 />
             ))}
         </section>

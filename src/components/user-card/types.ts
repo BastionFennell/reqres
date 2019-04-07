@@ -1,8 +1,9 @@
 export interface UserCardProps {
     avatar: string;
     date: string;
-    name: string;
+    first_name: string;
+    last_name: string;
     onDelete(): void;
-    onSave(name: string): void;
+    onSave(first_name: string, last_name: string): void;
 }
 
