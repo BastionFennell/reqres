@@ -3,6 +3,24 @@ import styled from 'styled-components';
 
 import { UserCardProps } from './types';
 
+const Actions = styled.section`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    padding: 3px;
+
+    &:hover {
+        opacity: 1;
+    }
+`;
+
+const EditingActions = styled(Actions)`
+    opacity: 1;
+`;
+
 const Article = styled.article`
     border: 1px solid black;
     border-top: none;
@@ -12,6 +30,10 @@ const Article = styled.article`
 
     &:first-of-type, &:nth-of-type(2) {
         border-top: 1px solid black;
+    }
+
+    &:hover ${Actions} {
+        opacity: 1;
     }
 `;
 
@@ -43,14 +65,6 @@ const Input = styled.input`
 
 const NameInput = styled(Input)`
     font-size: 24px;
-`;
-
-const Actions = styled.section`
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 3px;
 `;
 
 const ActionButton = styled.button`
@@ -135,31 +149,29 @@ const UserCard = ({
                     </React.Fragment>
                 )}
             </InfoText>
-            <Actions>
-                {editing ? (
-                    <React.Fragment>
-                        <ActionButton
-                            onClick={onClickSave}
-                        >
-                            <CheckIcon></CheckIcon>
-                        </ActionButton>
-                        <ActionButton
-                            onClick={onClickCancel}
-                        >
-                            <CancelIcon></CancelIcon>
-                        </ActionButton>
-                    </React.Fragment>
-                ) : (
-                    <React.Fragment>
-                        <ActionButton onClick={() => setEditing(true)}>
-                            <PencilIcon></PencilIcon>
-                        </ActionButton>
-                        <ActionButton onClick={onDelete}>
-                            <TrashIcon></TrashIcon>
-                        </ActionButton>
-                    </React.Fragment>
-                )}
-            </Actions>
+            {editing ? (
+                <EditingActions>
+                    <ActionButton
+                        onClick={onClickSave}
+                    >
+                        <CheckIcon></CheckIcon>
+                    </ActionButton>
+                    <ActionButton
+                        onClick={onClickCancel}
+                    >
+                        <CancelIcon></CancelIcon>
+                    </ActionButton>
+                </EditingActions>
+            ) : (
+                <Actions>
+                    <ActionButton onClick={() => setEditing(true)}>
+                        <PencilIcon></PencilIcon>
+                    </ActionButton>
+                    <ActionButton onClick={onDelete}>
+                        <TrashIcon></TrashIcon>
+                    </ActionButton>
+                </Actions>
+            )}
         </Article>
     );
 }
