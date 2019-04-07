@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 import { User } from 'src/state/users/types';
 import { UserListProps } from './types';
 
 import UserCard from 'src/components/user-card';
+
+const ListSection = styled.section`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+`;
 
 const UserList = ({
     onUserSave,
@@ -19,7 +26,7 @@ const UserList = ({
     )
 
     return (
-        <section>
+        <ListSection>
             { users.map((user, index) => (
                 <UserCard
                     avatar={user.avatar}
@@ -31,7 +38,7 @@ const UserList = ({
                     onSave={onSaveName(index, user)}
                 />
             ))}
-        </section>
+        </ListSection>
     );
 }
 

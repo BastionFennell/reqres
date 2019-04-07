@@ -10,7 +10,7 @@ const Article = styled.article`
     height: 75px;
     width: 300px;
 
-    &:first-of-type {
+    &:first-of-type, &:nth-of-type(2) {
         border-top: 1px solid black;
     }
 `;

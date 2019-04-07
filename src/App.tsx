@@ -3,6 +3,10 @@ import styled from 'styled-components';
 
 import UserPage from './pages/users';
 
+const AppContainer = styled.div`
+    overflow-x: hidden;
+`;
+
 const Header = styled.header`
     align-items: center;
     background: #e2e2e2;
@@ -24,14 +28,15 @@ const Logo = styled.div`
 
 const Main = styled.main`
     margin: 0 auto;
-    max-width: 990px;
-    padding: 0 95px;
+    max-width: 640px;
+    min-width: 400px;
+    padding: 0 30px;
 `;
 
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
+      <AppContainer>
         <Header>
             <Logo />
             Super Hero Co.
@@ -39,7 +44,7 @@ class App extends Component {
         <Main>
             <UserPage />
         </Main>
-      </React.Fragment>
+      </AppContainer>
     );
   }
 }
