@@ -1,5 +1,5 @@
 {
-  "main.css": "/reqres/static/css/main.33dab59a.chunk.css",
+  "main.css": "/reqres/static/css/main.27bc2391.chunk.css",
   "main.js": "/reqres/static/js/main.8af4f9a5.chunk.js",
   "main.js.map": "/reqres/static/js/main.8af4f9a5.chunk.js.map",
   "runtime~main.js": "/reqres/static/js/runtime~main.54625595.js",
@@ -7,7 +7,7 @@
   "static/js/2.9ce5ec61.chunk.js": "/reqres/static/js/2.9ce5ec61.chunk.js",
   "static/js/2.9ce5ec61.chunk.js.map": "/reqres/static/js/2.9ce5ec61.chunk.js.map",
   "index.html": "/reqres/index.html",
-  "precache-manifest.77dcb9ae5be62ba99cc85fdd7aa0bb70.js": "/reqres/precache-manifest.77dcb9ae5be62ba99cc85fdd7aa0bb70.js",
+  "precache-manifest.2618ff5405d3029d1c15beefabb1cd2a.js": "/reqres/precache-manifest.2618ff5405d3029d1c15beefabb1cd2a.js",
   "service-worker.js": "/reqres/service-worker.js",
-  "static/css/main.33dab59a.chunk.css.map": "/reqres/static/css/main.33dab59a.chunk.css.map"
+  "static/css/main.27bc2391.chunk.css.map": "/reqres/static/css/main.27bc2391.chunk.css.map"
 }
