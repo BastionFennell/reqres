@@ -1,4 +1,5 @@
 import {
+    ADD_USER,
     DELETE_USER_FROM_REDUX,
     SET_USER_LIST,
     SET_USER,
@@ -6,6 +7,7 @@ import {
 import { User } from './types';
 
 import {
+    addUserAction,
     deleteUserFromReduxAction,
     setUserListAction,
     setUserAction,
@@ -19,6 +21,12 @@ export default (
     action: UserActions,
 ) => {
     switch(action.type) {
+        case ADD_USER: {
+            const currentAction = action as addUserAction;
+            const user = currentAction.user;
+
+            return [...state, user];
+        }
         case DELETE_USER_FROM_REDUX: {
             const currentAction = action as deleteUserFromReduxAction;
             const index = currentAction.index;

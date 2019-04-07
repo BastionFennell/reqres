@@ -22,7 +22,7 @@ import {
 } from 'src/state/users/types';
 
 export const addUser = (user: User): addUserAction => ({
-    type: UPDATE_USER,
+    type: ADD_USER,
     user,
 });
 
