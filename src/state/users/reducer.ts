@@ -31,12 +31,12 @@ export default (
         }
         case SET_USER: {
             const currentAction = action as setUserAction;
+            const index = currentAction.index;
             const user = currentAction.user;
 
             const newState = state.slice(0);
-            // Because the id here doubles as the
-            // index, we can just use that.
-            newState[user.id - 1] = user;
+            newState[index] = user;
+
             return newState;
         }
         default:

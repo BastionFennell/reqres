@@ -10,8 +10,8 @@ const UserList = ({
     onUserDelete,
     users,
 }: UserListProps) => {
-    const onSaveName = (user: User) => (first_name: string, last_name: string) => (
-        onUserSave({
+    const onSaveName = (index: number, user: User) => (first_name: string, last_name: string) => (
+        onUserSave(index, {
             ...user,
             first_name,
             last_name,
@@ -28,7 +28,7 @@ const UserList = ({
                     first_name={user.first_name}
                     last_name={user.last_name}
                     onDelete={() => onUserDelete(index, user)}
-                    onSave={onSaveName(user)}
+                    onSave={onSaveName(index, user)}
                 />
             ))}
         </section>

@@ -28,11 +28,13 @@ export interface setUserListAction {
 
 export interface updateUserAction {
     readonly type: string;
+    readonly index: number;
     readonly user: User;
 }
 
 export interface setUserAction {
     readonly type: string;
+    readonly index: number;
     readonly user: User;
 }
 

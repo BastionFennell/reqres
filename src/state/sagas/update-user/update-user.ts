@@ -8,14 +8,14 @@ import { setUser } from 'src/state/users/actions';
 
 export const getUpdateUserUrl = (id: number) => `https://reqres.in/api/users/${id}`;
 
-export function* updateUserSaga({ user }: updateUserActionType) {
+export function* updateUserSaga({ index, user }: updateUserActionType) {
     const { data: response } = yield call(axios.put,
         getUpdateUserUrl(user.id),
         {...user},
     );
 
     const newUser = response || {};
-    const setUserAction = yield call(setUser, newUser);
+    const setUserAction = yield call(setUser, index, newUser);
 
     yield put(setUserAction);
 }

@@ -33,8 +33,9 @@ export const getUserList = (): getUserListAction => ({
     type: GET_USER_LIST,
 })
 
-export const setUser = (user: User): setUserAction => ({
+export const setUser = (index: number, user: User): setUserAction => ({
     type: SET_USER,
+    index,
     user,
 });
 
@@ -43,7 +44,8 @@ export const setUserList = (users: Array<User>): setUserListAction => ({
     users,
 })
 
-export const updateUser = (user: User): updateUserAction => ({
+export const updateUser = (index: number, user: User): updateUserAction => ({
     type: UPDATE_USER,
+    index,
     user,
 });

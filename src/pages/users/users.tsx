@@ -50,7 +50,7 @@ const mapStateToProps = (state: any): UserPageStateProps => ({
 const mapDispatchToProps = (dispatch: Function): UserPageDispatchProps => ({
     deleteUser: (index: number, user: User) => dispatch(deleteUser(index, user)),
     getUserList: () => dispatch(getUserList()),
-    updateUser: (user: User) => dispatch(updateUser(user)),
+    updateUser: (index: number, user: User) => dispatch(updateUser(index, user)),
 });
 
 export default connect<UserPageStateProps, UserPageDispatchProps, {}>(
