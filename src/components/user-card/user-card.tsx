@@ -63,6 +63,33 @@ const ActionButton = styled.button`
     width: 34px;
 `;
 
+const CheckIcon = styled.i.attrs({
+    className: 'fas fa-check',
+})`
+    color: green;
+    font-size: 18px;
+`;
+
+const CancelIcon = styled.i.attrs({
+    className: 'fas fa-times',
+})`
+    color: red;
+    font-size: 20px;
+    padding-top: 3px;
+`;
+
+const PencilIcon = styled.i.attrs({
+    className: 'fas fa-pencil-alt',
+})`
+    font-size: 18px;
+`;
+
+const TrashIcon = styled.i.attrs({
+    className: 'fas fa-trash-alt',
+})`
+    font-size: 18px;
+`;
+
 const UserCard = ({
     avatar,
     date,
@@ -114,21 +141,21 @@ const UserCard = ({
                         <ActionButton
                             onClick={onClickSave}
                         >
-                            y
+                            <CheckIcon></CheckIcon>
                         </ActionButton>
                         <ActionButton
                             onClick={onClickCancel}
                         >
-                            n
+                            <CancelIcon></CancelIcon>
                         </ActionButton>
                     </React.Fragment>
                 ) : (
                     <React.Fragment>
                         <ActionButton onClick={() => setEditing(true)}>
-                            e
+                            <PencilIcon></PencilIcon>
                         </ActionButton>
                         <ActionButton onClick={onDelete}>
-                            d
+                            <TrashIcon></TrashIcon>
                         </ActionButton>
                     </React.Fragment>
                 )}
