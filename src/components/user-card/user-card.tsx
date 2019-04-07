@@ -33,6 +33,12 @@ const Article = styled.article`
         border-top: 1px solid black;
     }
 
+    @media (max-width: 663px) {
+        &:nth-of-type(2) {
+            border-top: none;
+        }
+    }
+
     &:hover ${Actions} {
         opacity: 1;
     }
